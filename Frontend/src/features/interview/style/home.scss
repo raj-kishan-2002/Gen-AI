@@ -1,0 +1,407 @@
+// ─── Design Tokens ────────────────────────────────────────────────────────────
+$bg-page : #0d1117;
+$bg-card : #161b22;
+$bg-surface : #1c2230;
+$bg-upload : #1a2035;
+$bg-info : #1a2540;
+
+$accent-pink : #e8305a;
+$accent-blue : #4f8ef7;
+
+$border-subtle : rgba(255, 255, 255, 0.08);
+
+$text-primary : #f0f6fc;
+$text-secondary : #8b949e;
+$text-muted : #6e7681;
+
+$radius-card : 16px;
+$radius-input : 10px;
+$radius-btn : 50px;
+
+$ease : 0.2s ease;
+
+// ─── Page Shell ───────────────────────────────────────────────────────────────
+.home {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $bg-page;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem 2.5rem;
+  gap: 2rem;
+}
+
+// ─── Header ───────────────────────────────────────────────────────────────────
+.home__header {
+  text-align: center;
+  max-width: 640px;
+}
+
+.home__title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: $text-primary;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  white-space: nowrap;
+}
+
+.home__title--accent {
+  color: $accent-pink;
+}
+
+.home__subtitle {
+  font-size: 0.975rem;
+  color: $text-secondary;
+  line-height: 1.65;
+}
+
+// ─── Two-Panel Card ───────────────────────────────────────────────────────────
+.home__card {
+  width: 100%;
+  max-width: 960px;
+  background-color: $bg-card;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-card;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+// ─── Vertical Divider ─────────────────────────────────────────────────────────
+.home__divider {
+  width: 1px;
+  background-color: $border-subtle;
+  flex-shrink: 0;
+}
+
+// ─── Panel ────────────────────────────────────────────────────────────────────
+.home__panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  gap: 1rem;
+
+  &--left {
+    min-height: 520px;
+  }
+
+  &--right {
+    gap: 0.85rem;
+  }
+}
+
+// ─── Panel Header Row ─────────────────────────────────────────────────────────
+.home__panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.home__panel-icon {
+  display: flex;
+  align-items: center;
+  color: $accent-pink;
+  flex-shrink: 0;
+}
+
+.home__panel-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: $text-primary;
+  flex: 1;
+}
+
+// ─── Badges ───────────────────────────────────────────────────────────────────
+.home__badge {
+  display: inline-block;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+
+  &--required {
+    background-color: rgba($accent-pink, 0.12);
+    color: $accent-pink;
+    border: 1px solid rgba($accent-pink, 0.35);
+  }
+
+  &--best {
+    background-color: rgba($accent-pink, 0.12);
+    color: $accent-pink;
+    border: 1px solid rgba($accent-pink, 0.35);
+    margin-left: 0.45rem;
+    vertical-align: middle;
+  }
+}
+
+// ─── Textareas ────────────────────────────────────────────────────────────────
+.home__textarea {
+  flex: 1;
+  width: 100%;
+  background-color: $bg-surface;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-input;
+  color: $text-primary;
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  padding: 1rem 1.1rem;
+  resize: none;
+  outline: none;
+  transition: border-color $ease, box-shadow $ease;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    border-color: rgba($accent-pink, 0.55);
+    box-shadow: 0 0 0 3px rgba($accent-pink, 0.08);
+  }
+
+  // Self-description — fixed height, always-visible pink border
+  &--self {
+    flex: unset;
+    min-height: 110px;
+    border-color: $accent-pink;
+    box-shadow: 0 0 0 1px rgba($accent-pink, 0.2);
+  }
+}
+
+// ─── Char Count ───────────────────────────────────────────────────────────────
+.home__char-count {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.78rem;
+  color: $text-muted;
+  margin-top: -0.5rem;
+}
+
+// ─── Section Wrapper ──────────────────────────────────────────────────────────
+.home__section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+// ─── Section Label ────────────────────────────────────────────────────────────
+.home__section-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+// ─── Upload Zone ──────────────────────────────────────────────────────────────
+.home__upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  background-color: $bg-upload;
+  border: 1.5px dashed rgba(255, 255, 255, 0.14);
+  border-radius: $radius-input;
+  cursor: pointer;
+  transition: border-color $ease, background-color $ease;
+
+  &:hover {
+    border-color: rgba($accent-pink, 0.55);
+    background-color: rgba($accent-pink, 0.04);
+
+    .home__upload-icon {
+      transform: translateY(-4px);
+    }
+  }
+}
+
+.home__upload-icon {
+  color: $accent-pink;
+  display: flex;
+  transition: transform $ease;
+}
+
+.home__upload-primary {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.home__upload-secondary {
+  font-size: 0.78rem;
+  color: $text-muted;
+}
+
+// ─── OR Separator ─────────────────────────────────────────────────────────────
+.home__or {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-block: 0.2rem;
+}
+
+.home__or-line {
+  flex: 1;
+  height: 1px;
+  background-color: $border-subtle;
+}
+
+.home__or-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: $text-muted;
+}
+
+// ─── Info Banner ──────────────────────────────────────────────────────────────
+.home__info-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  background-color: $bg-info;
+  border: 1px solid rgba($accent-blue, 0.22);
+  border-radius: $radius-input;
+  padding: 0.85rem 1rem;
+}
+
+.home__info-icon {
+  flex-shrink: 0;
+  margin-top: 1px;
+  display: flex;
+}
+
+.home__info-text {
+  font-size: 0.83rem;
+  color: $text-secondary;
+  line-height: 1.6;
+
+  strong {
+    color: $text-primary;
+  }
+}
+
+.home__info-link {
+  color: $accent-blue;
+}
+
+// ─── Footer Bar ───────────────────────────────────────────────────────────────
+.home__footer {
+  width: 100%;
+  max-width: 960px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.1rem;
+}
+
+.home__footer-meta {
+  font-size: 0.8rem;
+  color: $text-muted;
+}
+
+.recent-reports {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 960px;
+
+  .reports-list {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    .report-item {
+      background-color: $bg-card;
+      border: 1px solid $border-subtle;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      cursor: pointer;
+      flex-shrink: 0;
+
+      .match-score {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: $accent-blue;
+        align-items: flex-start;
+      }
+    }
+  }
+}
+
+.report-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+
+// ─── Generate Button ──────────────────────────────────────────────────────────
+.home__generate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: $radius-btn;
+  background: linear-gradient(135deg, $accent-pink 0%, #c0003a 100%);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 4px 22px rgba($accent-pink, 0.38);
+  transition: transform $ease, box-shadow $ease, filter $ease;
+
+  svg {
+    flex-shrink: 0;
+    transition: transform $ease;
+  }
+
+  &:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba($accent-pink, 0.52);
+
+    svg {
+      transform: rotate(20deg) scale(1.1);
+    }
+  }
+
+  &:active {
+    transform: translateY(0);
+    filter: brightness(0.95);
+  }
+}
+
+// ─── Responsive ───────────────────────────────────────────────────────────────
+@media (max-width: 720px) {
+  .home__card {
+    flex-direction: column;
+  }
+
+  .home__divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .home__panel--left {
+    min-height: 260px;
+  }
+
+  .home__footer {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+}
